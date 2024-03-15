@@ -3,7 +3,7 @@ import ListUsers from "./Users/ListUsers";
 
 function App() {
   return (
-    <div className="mx-auto max-w-[600px]">
+    <div className="mx-auto max-w-[600px] p-16">
       <AddUserSection />
 
       <ListUsers />
