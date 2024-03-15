@@ -1,40 +1,20 @@
 import { useState } from "react";
-import "./App.css";
 import { useSelector } from "react-redux";
 import { IRootState } from "./redux/store";
+import UserCart from "./Users/UserCart";
+import AddUserSection from "./Users/AddUserSection";
 
 function App() {
-  const [name, setName] = useState("");
-  const [userName, setUserName] = useState("");
-
   const usersList = useSelector((state: IRootState) => state.usersData.list);
 
   return (
-    <div className="App">
-      <div className="add-user">
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Name ..."
-        />
-
-        <input
-          type="text"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-          placeholder="Username ..."
-        />
-
-        <button>Create User</button>
-      </div>
+    <div className="mx-auto max-w-[600px]">
+      <AddUserSection />
 
       <div className="listing-users">
         {usersList.map((user) => {
           return (
-            <div key={user.id} className="">
-              {user.name} {user.username}
-            </div>
+            <UserCart key={user.id} name={user.name} userName={user.username} />
           );
         })}
       </div>
