@@ -9,7 +9,12 @@ function ListUsers() {
     <div className="">
       {usersList.map((user) => {
         return (
-          <UserCart key={user.id} name={user.name} userName={user.username} />
+          <UserCart
+            key={user.id}
+            userId={user.id}
+            name={user.name}
+            userName={user.username}
+          />
         );
       })}
     </div>
