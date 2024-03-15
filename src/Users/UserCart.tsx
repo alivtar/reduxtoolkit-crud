@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../redux/slices/Users";
+import { deleteUser, updateUser } from "../redux/slices/Users";
 
 interface IUserCart {
   userId: string | number;
@@ -15,8 +15,20 @@ function UserCart({ userId, name, userName }: IUserCart) {
 
   return (
     <div className="p-8 rounded-8 border-1 border-solid mb-4 last:mb-0">
-      <h1 className="mb-2">Name: {name}</h1>
-      <p className="mb-2">Username: {userName}</p>
+      <div className="mb-2 flex items-start justify-between">
+        <div>
+          <h1 className="mb-2">Name: {name}</h1>
+          <p className="">Username: {userName}</p>
+        </div>
+
+        <button
+          className="bg-red-600 p-8 rounded-8 text-white"
+          onClick={() => dispatch(deleteUser({ userId }))}
+        >
+          Delete
+        </button>
+      </div>
+
       <div className="flex items-center gap-x-4">
         <input
           type="text"
