@@ -6,7 +6,7 @@ function ListUsers() {
   const usersList = useSelector((state: IRootState) => state.usersData.list);
 
   return (
-    <div className="listing-users">
+    <div className="">
       {usersList.map((user) => {
         return (
           <UserCart key={user.id} name={user.name} userName={user.username} />

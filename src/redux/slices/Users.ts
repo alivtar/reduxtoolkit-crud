@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { FakeData } from "../../data/FakeData";
 
 export type UserType = {
-  id: number;
+  id: number | string;
   name: string;
   username: string;
 };
@@ -19,8 +19,12 @@ const usersSlice = createSlice({
   name: "usersSlice",
   initialState: USERS_INITIAL_STATE,
   reducers: {
-    addUser: (state, action) => {},
+    addUser: (state, action: PayloadAction<UserType>) => {
+      state.list.push(action.payload);
+    },
   },
 });
+
+export const { addUser } = usersSlice.actions;
 
 export default usersSlice.reducer;
